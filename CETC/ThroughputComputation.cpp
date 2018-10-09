@@ -39,7 +39,7 @@ void Form1::ThroughPutETC()
 	//BackGround is in log values; needs to be converted to SI and to appropriate pixel area, from (erg/cm^2/s/A/arcsec^2) to (J/m^2/s/m/Npix^2)
 	//= 1x10^-7 (J/erg) / 1x10^-4 (m^2/cm^2) / 1x10^-10 (m/A) * pscale^2 (arcsec^2/pixel^2) = 1e7 * pscale^2
 	//and to 5 sigma??
-	double fac = 1e7 * pscale * pscale * (5 * sigma) * (5 * sigma);
+	double fac = 1e7 * pscale * pscale * (5 * 2*sigma) * (5 * 2*sigma);
 	for (int i = 0; i < LAMBDA_NM->Length; i++)
 		BACKGROUND[i] = Math::Pow(10, BACKGROUND[i]) * fac;
 
