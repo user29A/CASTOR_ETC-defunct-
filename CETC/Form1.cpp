@@ -49,39 +49,39 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 {
 	FIRSTSLOAD = true;
 
-	SourceGalaxyDrop->SelectedIndex = ::Convert::ToInt32(JPRegistry::GetReg("CETC", "SourceGalaxyDropIndex"));
-	SourceStarDrop->SelectedIndex = ::Convert::ToInt32(JPRegistry::GetReg("CETC", "SourceStarDropIndex"));
-	SourceBlackbodyTempTxt->Text = (String^)JPRegistry::GetReg("CETC", "SourceBlackbodyTempTxt");
-	FilterUVRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "FilterUVRadBtnChckd"));
-	FilteruRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "FilteruRadBtnChckd"));
-	FiltergRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "FiltergRadBtnChckd"));
-	FilterUVDarkRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "FilterUVDarkRadBtnChckd"));
-	FilteruWideRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "FilterUWideRadBtnChckd"));
-	SourceStarRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "SourceStarRadBtn"));
-	SourceGalaxyRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "SourceGalaxyRadBtn"));
-	SourceBlackbodyRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "SourceBlackbodyRadBtn"));
-	SourceAGNRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "SourceAGNRadBtn"));
-	SourceAGNDrop->SelectedIndex = ::Convert::ToInt32(JPRegistry::GetReg("CETC", "SourceAGNDropIndex"));
-	SourcePowerLawRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "SourcePowerLawRadBtn"));
-	SourcePowerLawDrop->SelectedIndex = ::Convert::ToInt32(JPRegistry::GetReg("CETC", "SourcePowerLawDropIndex"));
-	DistanceRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "DistanceRadBtn"));
-	mvRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "mvRadBtn"));
-	ExtinctionColumnDensityTxt->Text = (String^)JPRegistry::GetReg("CETC", "ExtinctionColumnDensityTxt");
-	ExtinctionAvTxt->Text = (String^)JPRegistry::GetReg("CETC", "ExtinctionAvTxt");
-	ExtinctionRvTxt->Text = (String^)JPRegistry::GetReg("CETC", "ExtinctionRvTxt");
-	ExtinctionColumnDensityRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "ExtinctionColumnDensityRadBtn"));
-	ExtinctionDistanceRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "ExtinctionDistanceRadBtn"));
-	ExtinctionAvRadBtn->Checked = ::Convert::ToBoolean(JPRegistry::GetReg("CETC", "ExtinctionAvRadBtn"));
-	RadiusTxt->Text = (String^)JPRegistry::GetReg("CETC", "RadiusTxt");
-	mvTxt->Text = (String^)JPRegistry::GetReg("CETC", "mvTxt");
-	DistanceTxt->Text = (String^)JPRegistry::GetReg("CETC", "DistanceTxt");
-	RedShiftTxt->Text = (String^)JPRegistry::GetReg("CETC", "RedShiftTxt");
-	mTxt->Text = (String^)JPRegistry::GetReg("CETC", "mTxt");
-	PowerLawNormTxt->Text = (String^)JPRegistry::GetReg("CETC", "PowerLawNormTxt");
-	PowerLawAlphaTxt->Text = (String^)JPRegistry::GetReg("CETC", "PowerLawAlphaTxt");
-	SNTargetUpD->Value = ::Convert::ToDecimal(JPRegistry::GetReg("CETC", "SNTargetUpD"));
-	PlateScaleUpD->Value = ::Convert::ToDecimal(JPRegistry::GetReg("CETC", "PlateScaleUpD"));
-	FWHMUpD->Value = ::Convert::ToDecimal(JPRegistry::GetReg("CETC", "FWHMUpD"));
+	SourceGalaxyDrop->SelectedIndex = ::Convert::ToInt32(GetReg("CETC", "SourceGalaxyDropIndex"));
+	SourceStarDrop->SelectedIndex = ::Convert::ToInt32(GetReg("CETC", "SourceStarDropIndex"));
+	SourceBlackbodyTempTxt->Text = (String^)GetReg("CETC", "SourceBlackbodyTempTxt");
+	FilterUVRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "FilterUVRadBtnChckd"));
+	FilteruRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "FilteruRadBtnChckd"));
+	FiltergRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "FiltergRadBtnChckd"));
+	FilterUVDarkRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "FilterUVDarkRadBtnChckd"));
+	FilteruWideRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "FilterUWideRadBtnChckd"));
+	SourceStarRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "SourceStarRadBtn"));
+	SourceGalaxyRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "SourceGalaxyRadBtn"));
+	SourceBlackbodyRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "SourceBlackbodyRadBtn"));
+	SourceAGNRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "SourceAGNRadBtn"));
+	SourceAGNDrop->SelectedIndex = ::Convert::ToInt32(GetReg("CETC", "SourceAGNDropIndex"));
+	SourcePowerLawRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "SourcePowerLawRadBtn"));
+	SourcePowerLawDrop->SelectedIndex = ::Convert::ToInt32(GetReg("CETC", "SourcePowerLawDropIndex"));
+	DistanceRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "DistanceRadBtn"));
+	mvRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "mvRadBtn"));
+	ExtinctionColumnDensityTxt->Text = (String^)GetReg("CETC", "ExtinctionColumnDensityTxt");
+	ExtinctionAvTxt->Text = (String^)GetReg("CETC", "ExtinctionAvTxt");
+	ExtinctionRvTxt->Text = (String^)GetReg("CETC", "ExtinctionRvTxt");
+	ExtinctionColumnDensityRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "ExtinctionColumnDensityRadBtn"));
+	ExtinctionDistanceRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "ExtinctionDistanceRadBtn"));
+	ExtinctionAvRadBtn->Checked = ::Convert::ToBoolean(GetReg("CETC", "ExtinctionAvRadBtn"));
+	RadiusTxt->Text = (String^)GetReg("CETC", "RadiusTxt");
+	mvTxt->Text = (String^)GetReg("CETC", "mvTxt");
+	DistanceTxt->Text = (String^)GetReg("CETC", "DistanceTxt");
+	RedShiftTxt->Text = (String^)GetReg("CETC", "RedShiftTxt");
+	mTxt->Text = (String^)GetReg("CETC", "mTxt");
+	PowerLawNormTxt->Text = (String^)GetReg("CETC", "PowerLawNormTxt");
+	PowerLawAlphaTxt->Text = (String^)GetReg("CETC", "PowerLawAlphaTxt");
+	SNTargetUpD->Value = ::Convert::ToDecimal(GetReg("CETC", "SNTargetUpD"));
+	PlateScaleUpD->Value = ::Convert::ToDecimal(GetReg("CETC", "PlateScaleUpD"));
+	FWHMUpD->Value = ::Convert::ToDecimal(GetReg("CETC", "FWHMUpD"));
 
 	LAMBDA_NM = JPFits::FitsFile::ReadImageVectorOnly(LAMBDA_NM_FILENAME, nullptr);
 	
@@ -119,10 +119,7 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 		//TO DO:  Should supress computation until all switches are set, unlike the GUI interface where switch changes
 		//trigger the computation and graph updates etc.
 		//STARTARGS->Length > 0 is the bool that tells if script start
-
-
-
-
+		
 		//read the argument file name and set all the parameters, then execute
 		String^ inputfile = STARTARGS[0];
 
@@ -174,6 +171,9 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 
 
 		sr->Close();
+
+		//reset startargs
+		STARTARGS = gcnew array<String^>(0);
 
 		//now compute
 		ThroughPutETC();//this will need to be called when/if the switch changes are supressed for script execution...otherwise for now it is already done
@@ -260,7 +260,7 @@ void Form1::SourceStarRadBtn_CheckedChanged(System::Object^  sender, System::Eve
 		mvRadBtn->Enabled = false;
 	}
 
-	JPRegistry::SetReg("CETC", "SourceStarRadBtn", SourceStarRadBtn->Checked);
+	SetReg("CETC", "SourceStarRadBtn", SourceStarRadBtn->Checked);
 }
 
 void Form1::SourceStarDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -268,7 +268,7 @@ void Form1::SourceStarDrop_SelectedIndexChanged(System::Object^  sender, System:
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "SourceStarDropIndex", SourceStarDrop->SelectedIndex);
+	SetReg("CETC", "SourceStarDropIndex", SourceStarDrop->SelectedIndex);
 
 	ThroughPutETC();
 }
@@ -300,7 +300,7 @@ void Form1::SourceAGNRadBtn_CheckedChanged(System::Object^  sender, System::Even
 		mTxt->Enabled = false;
 	}
 
-	JPRegistry::SetReg("CETC", "SourceAGNRadBtn", SourceAGNRadBtn->Checked);
+	SetReg("CETC", "SourceAGNRadBtn", SourceAGNRadBtn->Checked);
 }
 
 void Form1::SourceGalaxyRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
@@ -330,7 +330,7 @@ void Form1::SourceGalaxyRadBtn_CheckedChanged(System::Object^  sender, System::E
 		mTxt->Enabled = false;
 	}
 
-	JPRegistry::SetReg("CETC", "SourceGalaxyRadBtn", SourceGalaxyRadBtn->Checked);
+	SetReg("CETC", "SourceGalaxyRadBtn", SourceGalaxyRadBtn->Checked);
 }
 
 void Form1::SourceGalaxyDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -338,7 +338,7 @@ void Form1::SourceGalaxyDrop_SelectedIndexChanged(System::Object^  sender, Syste
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "SourceGalaxyDropIndex", SourceGalaxyDrop->SelectedIndex);
+	SetReg("CETC", "SourceGalaxyDropIndex", SourceGalaxyDrop->SelectedIndex);
 
 	ThroughPutETC();
 }
@@ -368,7 +368,7 @@ void Form1::SourceBlackbodyRadBtn_CheckedChanged(System::Object^  sender, System
 	else
 		SourceBlackbodyTempTxt->Enabled = false;
 
-	JPRegistry::SetReg("CETC", "SourceBlackbodyRadBtn", SourceBlackbodyRadBtn->Checked);
+	SetReg("CETC", "SourceBlackbodyRadBtn", SourceBlackbodyRadBtn->Checked);
 }
 
 void Form1::DistanceRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
@@ -383,7 +383,7 @@ void Form1::DistanceRadBtn_CheckedChanged(System::Object^  sender, System::Event
 	else
 		DistanceTxt->Enabled = false;
 
-	JPRegistry::SetReg("CETC", "DistanceRadBtn", DistanceRadBtn->Checked);
+	SetReg("CETC", "DistanceRadBtn", DistanceRadBtn->Checked);
 }
 
 void Form1::mvRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
@@ -398,7 +398,7 @@ void Form1::mvRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^ 
 	else
 		mvTxt->Enabled = false;
 
-	JPRegistry::SetReg("CETC", "mvRadBtn", mvRadBtn->Checked);
+	SetReg("CETC", "mvRadBtn", mvRadBtn->Checked);
 }
 
 void Form1::DistanceTxt_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e)
@@ -502,7 +502,7 @@ void Form1::SourceBlackbodyTempTxt_KeyDown(System::Object^  sender, System::Wind
 
 void Form1::SourceBlackbodyTempTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	JPRegistry::SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
+	SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
 }
 
 void Form1::SourceAGNDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -510,7 +510,7 @@ void Form1::SourceAGNDrop_SelectedIndexChanged(System::Object^  sender, System::
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "SourceAGNDropIndex", SourceAGNDrop->SelectedIndex);
+	SetReg("CETC", "SourceAGNDropIndex", SourceAGNDrop->SelectedIndex);
 
 	ThroughPutETC();
 }
@@ -543,7 +543,7 @@ void Form1::SourcePowerLawRadBtn_CheckedChanged(System::Object^  sender, System:
 		PowerLawNormTxt->Enabled = false;
 	}
 
-	JPRegistry::SetReg("CETC", "SourcePowerLawRadBtn", SourcePowerLawRadBtn->Checked);
+	SetReg("CETC", "SourcePowerLawRadBtn", SourcePowerLawRadBtn->Checked);
 }
 
 void Form1::SourcePowerLawDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -556,7 +556,7 @@ void Form1::SourcePowerLawDrop_SelectedIndexChanged(System::Object^  sender, Sys
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "SourcePowerLawDropIndex", SourcePowerLawDrop->SelectedIndex);
+	SetReg("CETC", "SourcePowerLawDropIndex", SourcePowerLawDrop->SelectedIndex);
 
 	ThroughPutETC();
 }
@@ -577,7 +577,7 @@ void Form1::FilterUVDarkRadBtn_CheckedChanged(System::Object^  sender, System::E
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FilterUVDarkRadBtnChckd", FilterUVDarkRadBtn->Checked);
+	SetReg("CETC", "FilterUVDarkRadBtnChckd", FilterUVDarkRadBtn->Checked);
 	
 	if (FilterUVDarkRadBtn->Checked)
 	{
@@ -591,7 +591,7 @@ void Form1::FilterUVRadBtn_CheckedChanged(System::Object^  sender, System::Event
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FilterUVRadBtnChckd", FilterUVRadBtn->Checked);
+	SetReg("CETC", "FilterUVRadBtnChckd", FilterUVRadBtn->Checked);
 	
 	if (FilterUVRadBtn->Checked)
 	{
@@ -605,7 +605,7 @@ void Form1::FilteruWideRadBtn_CheckedChanged(System::Object^  sender, System::Ev
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FilterUWideRadBtnChckd", FilteruWideRadBtn->Checked);
+	SetReg("CETC", "FilterUWideRadBtnChckd", FilteruWideRadBtn->Checked);
 	
 	if (FilteruWideRadBtn->Checked)
 	{
@@ -619,7 +619,7 @@ void Form1::FilteruRadBtn_CheckedChanged(System::Object^  sender, System::EventA
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FilteruRadBtnChckd", FilteruRadBtn->Checked);
+	SetReg("CETC", "FilteruRadBtnChckd", FilteruRadBtn->Checked);
 	
 	if (FilteruRadBtn->Checked)
 	{
@@ -633,7 +633,7 @@ void Form1::FiltergRadBtn_CheckedChanged(System::Object^  sender, System::EventA
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FiltergRadBtnChckd", FiltergRadBtn->Checked);
+	SetReg("CETC", "FiltergRadBtnChckd", FiltergRadBtn->Checked);
 	
 	if (FiltergRadBtn->Checked)
 	{
@@ -662,61 +662,61 @@ void Form1::CheckTextToNum(TextBox^ textbox)
 void Form1::PowerLawAlphaTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "PowerLawAlphaTxt", PowerLawAlphaTxt->Text);
+	SetReg("CETC", "PowerLawAlphaTxt", PowerLawAlphaTxt->Text);
 }
 
 void Form1::PowerLawNormTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "PowerLawNormTxt", PowerLawNormTxt->Text);
+	SetReg("CETC", "PowerLawNormTxt", PowerLawNormTxt->Text);
 }
 
 void Form1::mTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "mTxt", mTxt->Text);
+	SetReg("CETC", "mTxt", mTxt->Text);
 }
 
 void Form1::RedShiftTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "RedShiftTxt", RedShiftTxt->Text);
+	SetReg("CETC", "RedShiftTxt", RedShiftTxt->Text);
 }
 
 void Form1::DistanceTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "DistanceTxt", DistanceTxt->Text);
+	SetReg("CETC", "DistanceTxt", DistanceTxt->Text);
 }
 
 void Form1::mvTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "mvTxt", mvTxt->Text);
+	SetReg("CETC", "mvTxt", mvTxt->Text);
 }
 
 void Form1::RadiusTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "RadiusTxt", RadiusTxt->Text);
+	SetReg("CETC", "RadiusTxt", RadiusTxt->Text);
 }
 
 void Form1::ExtinctionRvTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "ExtinctionRvTxt", ExtinctionRvTxt->Text);
+	SetReg("CETC", "ExtinctionRvTxt", ExtinctionRvTxt->Text);
 }
 
 void Form1::ExtinctionAvTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "ExtinctionAvTxt", ExtinctionAvTxt->Text);
+	SetReg("CETC", "ExtinctionAvTxt", ExtinctionAvTxt->Text);
 }
 
 void Form1::ExtinctionColumnDensityTxt_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 {
 	CheckTextToNum((TextBox^)sender);
-	JPRegistry::SetReg("CETC", "ExtinctionColumnDensityTxt", ExtinctionColumnDensityTxt->Text);
+	SetReg("CETC", "ExtinctionColumnDensityTxt", ExtinctionColumnDensityTxt->Text);
 }
 
 void Form1::ExtinctionAvRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e) 
@@ -732,7 +732,7 @@ void Form1::ExtinctionAvRadBtn_CheckedChanged(System::Object^  sender, System::E
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "ExtinctionAvRadBtn", ExtinctionAvRadBtn->Checked);
+	SetReg("CETC", "ExtinctionAvRadBtn", ExtinctionAvRadBtn->Checked);
 
 	ThroughPutETC();
 }
@@ -750,7 +750,7 @@ void Form1::ExtinctionColumnDensityRadBtn_CheckedChanged(System::Object^  sender
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "ExtinctionColumnDensityRadBtn", ExtinctionColumnDensityRadBtn->Checked);
+	SetReg("CETC", "ExtinctionColumnDensityRadBtn", ExtinctionColumnDensityRadBtn->Checked);
 
 	ThroughPutETC();
 }
@@ -766,7 +766,7 @@ void Form1::ExtinctionDistanceRadBtn_CheckedChanged(System::Object^  sender, Sys
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "ExtinctionDistanceRadBtn", ExtinctionDistanceRadBtn->Checked);
+	SetReg("CETC", "ExtinctionDistanceRadBtn", ExtinctionDistanceRadBtn->Checked);
 
 	ThroughPutETC();
 }
@@ -841,7 +841,7 @@ void Form1::SNTargetUpD_ValueChanged(System::Object^  sender, System::EventArgs^
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "SNTargetUpD", SNTargetUpD->Value.ToString());
+	SetReg("CETC", "SNTargetUpD", SNTargetUpD->Value.ToString());
 
 	if (!COMPUTATION_EXISTS)
 		return;
@@ -863,7 +863,7 @@ void Form1::PlateScaleUpD_ValueChanged(System::Object^  sender, System::EventArg
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "PlateScaleUpD", PlateScaleUpD->Value.ToString());
+	SetReg("CETC", "PlateScaleUpD", PlateScaleUpD->Value.ToString());
 	ThroughPutETC();
 }
 
@@ -872,7 +872,7 @@ void Form1::FWHMUpD_ValueChanged(System::Object^  sender, System::EventArgs^  e)
 	if (FIRSTSLOAD)
 		return;
 
-	JPRegistry::SetReg("CETC", "FWHMUpD", FWHMUpD->Value.ToString());
+	SetReg("CETC", "FWHMUpD", FWHMUpD->Value.ToString());
 	ThroughPutETC();
 }
 
@@ -1338,7 +1338,7 @@ void Form1::SourceSpectralType()
 	for (int i = 0; i < kurucz_lambda->Length; i++)
 		if (kurucz_lambda[i]/10 > LAMBDA_NM[i_LAMBDA_NM])
 		{
-			SOURCE_FLUX[i_LAMBDA_NM] = kurucz_source[i] * 1e7;  //convert from erg/s/cm^3 -> J/s/M^3;
+			SOURCE_FLUX[i_LAMBDA_NM] = kurucz_source[i] * 1e7;  //convert from erg/s/cm^3 -> J/s/m^3;
 			i_LAMBDA_NM++;
 			
 			if (i_LAMBDA_NM == NELEMENTS)
@@ -1347,7 +1347,6 @@ void Form1::SourceSpectralType()
 
 	double distance = ::Convert::ToDouble(DistanceTxt->Text);
 	double radius = Convert::ToDouble(RadiusTxt->Text);
-	double solidangle = Math::PI * (radius*SR2KPC)*(radius*SR2KPC) / (distance*distance);
 
 	if (mvRadBtn->Checked)
 	{
@@ -1359,7 +1358,7 @@ void Form1::SourceSpectralType()
 			DistanceTxt->Text = "0.001";
 	}
 
-	solidangle = Math::PI * (radius*SR2KPC)*(radius*SR2KPC) / (distance*distance);
+	double solidangle = Math::PI * (radius*SR2KPC)*(radius*SR2KPC) / (distance*distance);
 
 	for (int i = 0; i < NELEMENTS; i++)
 		SOURCE_FLUX_LOCAL[i] = solidangle * SOURCE_FLUX[i] / Math::PI;// divide by PI because spectrum input is surface flux not intensity: surface flux = PI*intensity

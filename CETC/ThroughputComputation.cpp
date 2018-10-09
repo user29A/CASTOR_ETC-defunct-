@@ -99,9 +99,9 @@ void Form1::ThroughPutETC()
 		{
 			double lambda_m = LAMBDA_NM[j] * 1e-9;
 
-			FINAL_FLUX_FILTERS[j, i] = (SOURCE_FLUX_LOCAL[j] * lambda_m/(h*c)) * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j]*MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
+			FINAL_FLUX_FILTERS[j, i] = (SOURCE_FLUX_LOCAL[j] * lambda_m/(h*c)) * EXTINCTION[j] * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j] * MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
 			//transfer UVBackground through telescope - background is in units of SourceFlux (SI)
-			FINAL_FLUX_FILTERS_BG[j, i] = (BACKGROUND[j] * lambda_m/(h*c)) * EXTINCTION[j] * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j]*MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
+			FINAL_FLUX_FILTERS_BG[j, i] = (BACKGROUND[j] * lambda_m/(h*c)) * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j] * MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
 
 			FINAL_COUNTS[i] += FINAL_FLUX_FILTERS[j, i] * LAMBDASTEP;
 			FINAL_COUNTS_BG[i] += FINAL_FLUX_FILTERS_BG[j, i] * LAMBDASTEP;
@@ -115,7 +115,7 @@ void Form1::ThroughPutETC()
 			double tn_2 = double(2 * n * 2 * n);
 			double t_s2 = 2 * sigma * sigma;
 			double tnp1_2 = double((2 * n + 1) * (2 * n + 1));
-			//#pragma omp parallel for reduction(+:sum)
+			#pragma omp parallel for reduction(+:sum)
 			for (int x = -n; x <= n; x++)
 				for (int y = -n; y <= n; y++)
 					sum += A * Math::Exp(-(x*x + y*y) / tn_2 / t_s2);
@@ -127,7 +127,7 @@ void Form1::ThroughPutETC()
 
 		}
 
-		SN_TIME[i] = SN_target * SN_target * (1 + FINAL_COUNTS_BG[i] / FINAL_COUNTS[i]) / FINAL_COUNTS[i];
+		SN_TIME[i] = SN_target * SN_target * (1 /*+ FINAL_COUNTS_BG[i]*/ / FINAL_COUNTS[i]) / FINAL_COUNTS[i];
 	}
 
 	#pragma endregion

@@ -20,7 +20,7 @@ GNU General Public License. */
 
 #pragma once
 
-#include <math.h>
+using namespace Microsoft::Win32;
 
 namespace CETC {
 
@@ -1409,6 +1409,25 @@ double K = 1.38065E-23; //J/K
 double Rsun = 6.96E8; //m
 double SR2KPC = 2.25534E-11; //solar radii to kpc
 double KPC2M = 3.08568025E19; //kpc to meters
+
+void SetReg(System::String^ ProgramName, System::String^ KeyName, System::Object^ KeyValue)
+{
+	RegistryKey^ User = Registry::CurrentUser;
+	RegistryKey^ SW = User->OpenSubKey("Software", true);
+	RegistryKey^ AstroWerks = SW->CreateSubKey("AstroWerks");
+	RegistryKey^ SUBKEY = AstroWerks->CreateSubKey(ProgramName);
+	SUBKEY->SetValue(KeyName, KeyValue);
+}
+
+Object^ GetReg(System::String^ ProgramName, System::String^ KeyName)
+{
+	RegistryKey^ User = Registry::CurrentUser;
+	RegistryKey^ SW = User->OpenSubKey("Software", true);
+	RegistryKey^ AstroWerks = SW->CreateSubKey("AstroWerks");
+	RegistryKey^ SUBKEY = AstroWerks->CreateSubKey(ProgramName);
+	Object ^ result = SUBKEY->GetValue(KeyName);
+	return result;
+}
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e);
 private: System::Void SourceStarRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
