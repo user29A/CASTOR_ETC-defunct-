@@ -35,6 +35,14 @@ void Form1::ThroughPutETC()
 	double pscale = (double)PlateScaleUpD->Value;//arcsec/pixel
 	double sigma = FWHM / 2.355 / pscale;//pixels
 
+	BACKGROUND = JPFits::FitsFile::ReadImageVectorOnly(BACKGROUND_FILENAME, nullptr);
+	//BackGround is in log values; needs to be converted to SI and to appropriate pixel area, from (erg/cm^2/s/A/arcsec^2) to (J/m^2/s/m/Npix^2)
+	//= 1x10^-7 (J/erg) / 1x10^-4 (m^2/cm^2) / 1x10^-10 (m/A) * pscale^2 (arcsec^2/pixel^2) = 1e7 * pscale^2
+	//and to 5 sigma??
+	double fac = 1e7 * pscale * pscale * (5 * sigma) * (5 * sigma);
+	for (int i = 0; i < LAMBDA_NM->Length; i++)
+		BACKGROUND[i] = Math::Pow(10, BACKGROUND[i]) * fac;
+
 	#pragma region Sources and Source Flux Computation
 	if (SourceBlackbodyRadBtn->Checked)
 		SourceBlackBody();//sets SOURCE_FLUX and SOURCE_FLUX_LOCAL (before extinction)
@@ -100,7 +108,6 @@ void Form1::ThroughPutETC()
 			double lambda_m = LAMBDA_NM[j] * 1e-9;
 
 			FINAL_FLUX_FILTERS[j, i] = (SOURCE_FLUX_LOCAL[j] * lambda_m/(h*c)) * EXTINCTION[j] * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j] * MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
-			//transfer UVBackground through telescope - background is in units of SourceFlux (SI)
 			FINAL_FLUX_FILTERS_BG[j, i] = (BACKGROUND[j] * lambda_m/(h*c)) * DETECTOR_QE[j] * FILTERS[j, i] * MIRROR_REFL[j] * MIRROR_REFL[j] * MIRROR_EFF_AREA * 1e-9;
 
 			FINAL_COUNTS[i] += FINAL_FLUX_FILTERS[j, i] * LAMBDASTEP;
@@ -127,7 +134,7 @@ void Form1::ThroughPutETC()
 
 		}
 
-		SN_TIME[i] = SN_target * SN_target * (1 /*+ FINAL_COUNTS_BG[i]*/ / FINAL_COUNTS[i]) / FINAL_COUNTS[i];
+		SN_TIME[i] = SN_target * SN_target * (1 + FINAL_COUNTS_BG[i] / FINAL_COUNTS[i]) / FINAL_COUNTS[i];
 	}
 
 	#pragma endregion

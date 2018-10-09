@@ -87,11 +87,8 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 	
 	DETECTOR_QE = JPFits::FitsFile::ReadImageVectorOnly(QE_FILENAME, nullptr);
 	
-	BACKGROUND = JPFits::FitsFile::ReadImageVectorOnly(BACKGROUND_FILENAME, nullptr); 
-	//BG is in log values; needs to be converted to SI, from (erg/cm^2/s/A/arcsec^2) to (J/m^2/s/m/9pix^2)
-	//= 1x10^-7 (J/erg) / 1x10^-4 (m^2/cm^2) / 1x10^-10 (m/A) / 1/97.2 (9pix^2/arcsec^2) = 9.72x10^8
-	for (int i = 0; i < LAMBDA_NM->Length; i++)
-		BACKGROUND[i] = Math::Pow(10, BACKGROUND[i]) * 9.72e8;
+	//BACKGROUND = JPFits::FitsFile::ReadImageVectorOnly(BACKGROUND_FILENAME, nullptr);
+	//need to update background vector depending on pixel scale and convert to SI upon calculation...do in ThroughPutETC();
 
 	MIRROR_REFL = JPFits::FitsFile::ReadImageVectorOnly(MIRROR_REFL_FILENAME, nullptr);
 
