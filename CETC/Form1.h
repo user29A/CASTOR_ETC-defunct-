@@ -71,7 +71,7 @@ private: System::Windows::Forms::RadioButton^  SourceGalaxyRadBtn;
 private: System::Windows::Forms::GroupBox^  ExtinctionGroupBox;
 private: System::Windows::Forms::ComboBox^  SourceGalaxyDrop;
 private: System::Windows::Forms::RadioButton^  SourceBlackbodyRadBtn;
-private: System::Windows::Forms::MaskedTextBox^  SourceBlackbodyTempTxt;
+
 private: System::Windows::Forms::ComboBox^  SourceAGNDrop;
 private: System::Windows::Forms::RadioButton^  SourceAGNRadBtn;
 private: System::Windows::Forms::GroupBox^  FilterGroupBox;
@@ -143,6 +143,8 @@ private: System::Windows::Forms::Label^  MaxCountuWideLabel;
 private: System::Windows::Forms::Label^  MaxCountUVLabel;
 private: System::Windows::Forms::Label^  MaxCountUVDarkLabel;
 private: System::Windows::Forms::CheckBox^  ShowBackgroundChck;
+private: System::Windows::Forms::Label^  label14;
+private: System::Windows::Forms::TextBox^  SourceBlackbodyTempTxt;
 private: System::ComponentModel::IContainer^  components;
 
 	private:
@@ -176,7 +178,6 @@ private: System::ComponentModel::IContainer^  components;
 			this->SpectralTypeHelpBtn = (gcnew System::Windows::Forms::Button());
 			this->SourcePowerLawDrop = (gcnew System::Windows::Forms::ComboBox());
 			this->SourceAGNDrop = (gcnew System::Windows::Forms::ComboBox());
-			this->SourceBlackbodyTempTxt = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->SourcePowerLawRadBtn = (gcnew System::Windows::Forms::RadioButton());
 			this->SourceBlackbodyRadBtn = (gcnew System::Windows::Forms::RadioButton());
 			this->SourceAGNRadBtn = (gcnew System::Windows::Forms::RadioButton());
@@ -249,6 +250,8 @@ private: System::ComponentModel::IContainer^  components;
 			this->PlateScaleUpD = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->ShowBackgroundChck = (gcnew System::Windows::Forms::CheckBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->SourceBlackbodyTempTxt = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Chart_Source))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Chart_Final))->BeginInit();
 			this->SourceTypeGroupBox->SuspendLayout();
@@ -321,12 +324,13 @@ private: System::ComponentModel::IContainer^  components;
 			// SourceTypeGroupBox
 			// 
 			this->SourceTypeGroupBox->BackColor = System::Drawing::Color::Silver;
+			this->SourceTypeGroupBox->Controls->Add(this->SourceBlackbodyTempTxt);
+			this->SourceTypeGroupBox->Controls->Add(this->label14);
 			this->SourceTypeGroupBox->Controls->Add(this->GalaxyTypeHelpBtn);
 			this->SourceTypeGroupBox->Controls->Add(this->AGNTypeHelpBtn);
 			this->SourceTypeGroupBox->Controls->Add(this->SpectralTypeHelpBtn);
 			this->SourceTypeGroupBox->Controls->Add(this->SourcePowerLawDrop);
 			this->SourceTypeGroupBox->Controls->Add(this->SourceAGNDrop);
-			this->SourceTypeGroupBox->Controls->Add(this->SourceBlackbodyTempTxt);
 			this->SourceTypeGroupBox->Controls->Add(this->SourcePowerLawRadBtn);
 			this->SourceTypeGroupBox->Controls->Add(this->SourceBlackbodyRadBtn);
 			this->SourceTypeGroupBox->Controls->Add(this->SourceAGNRadBtn);
@@ -410,18 +414,6 @@ private: System::ComponentModel::IContainer^  components;
 			this->SourceAGNDrop->DropDown += gcnew System::EventHandler(this, &Form1::SourceAGNDrop_DropDown);
 			this->SourceAGNDrop->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::SourceAGNDrop_SelectedIndexChanged);
 			this->SourceAGNDrop->DropDownClosed += gcnew System::EventHandler(this, &Form1::SourceAGNDrop_DropDownClosed);
-			// 
-			// SourceBlackbodyTempTxt
-			// 
-			this->SourceBlackbodyTempTxt->Enabled = false;
-			this->SourceBlackbodyTempTxt->Location = System::Drawing::Point(123, 22);
-			this->SourceBlackbodyTempTxt->Mask = L"0000000K";
-			this->SourceBlackbodyTempTxt->Name = L"SourceBlackbodyTempTxt";
-			this->SourceBlackbodyTempTxt->Size = System::Drawing::Size(88, 25);
-			this->SourceBlackbodyTempTxt->TabIndex = 7;
-			this->SourceBlackbodyTempTxt->Text = L"50000";
-			this->SourceBlackbodyTempTxt->TextChanged += gcnew System::EventHandler(this, &Form1::SourceBlackbodyTempTxt_TextChanged);
-			this->SourceBlackbodyTempTxt->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Form1::SourceBlackbodyTempTxt_KeyDown);
 			// 
 			// SourcePowerLawRadBtn
 			// 
@@ -1256,6 +1248,24 @@ private: System::ComponentModel::IContainer^  components;
 			this->ShowBackgroundChck->Text = L"Show Background";
 			this->ShowBackgroundChck->UseVisualStyleBackColor = true;
 			this->ShowBackgroundChck->CheckedChanged += gcnew System::EventHandler(this, &Form1::ShowBackgroundChck_CheckedChanged);
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(217, 25);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(20, 18);
+			this->label14->TabIndex = 18;
+			this->label14->Text = L"K";
+			// 
+			// SourceBlackbodyTempTxt
+			// 
+			this->SourceBlackbodyTempTxt->Location = System::Drawing::Point(123, 22);
+			this->SourceBlackbodyTempTxt->Name = L"SourceBlackbodyTempTxt";
+			this->SourceBlackbodyTempTxt->Size = System::Drawing::Size(88, 25);
+			this->SourceBlackbodyTempTxt->TabIndex = 21;
+			this->SourceBlackbodyTempTxt->TextChanged += gcnew System::EventHandler(this, &Form1::SourceBlackbodyTempTxt_TextChanged);
+			this->SourceBlackbodyTempTxt->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Form1::SourceBlackbodyTempTxt_KeyDown);
 			// 
 			// Form1
 			// 

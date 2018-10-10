@@ -164,8 +164,470 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 		}
 		//source radio button now set
 
+		line = sr->ReadLine();
+		if (line != "BBTEMP")
+		{
+			::MessageBox::Show("Input file error at BBTEMP.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at BBTEMP value: not a numeric value.  Stopping!");
+			return;
+		}
+		SourceBlackbodyTempTxt->Text = line;
+		//BB temperature set
 
+		line = sr->ReadLine();
+		if (line != "STYPE")
+		{
+			::MessageBox::Show("Input file error at STYPE.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		int index = SourceStarDrop->FindString(line);
+		if (index == -1)
+		{
+			::MessageBox::Show("Input file error at Spectral Type value: not a spectral type.  Stopping!");
+			return;
+		}
+		SourceStarDrop->SelectedIndex = index;
+		//spectral type set
 
+		line = sr->ReadLine();
+		if (line != "ALPHA_NU")
+		{
+			::MessageBox::Show("Input file error at ALPHA_NU.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToBoolean(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at Aplha_Nu value: not a bool.  Stopping!");
+			return;
+		}
+		if (Convert::ToBoolean(line))
+			SourcePowerLawDrop->SelectedIndex = 0;
+		else
+			SourcePowerLawDrop->SelectedIndex = 1;
+		//alpha nu or alpha lambda set
+
+		line = sr->ReadLine();
+		if (line != "AGNTYPE")
+		{
+			::MessageBox::Show("Input file error at AGNTYPE.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		index = SourceAGNDrop->FindString(line);
+		if (index == -1)
+		{
+			::MessageBox::Show("Input file error at AGN Type value: not an AGN type.  Stopping!");
+			return;
+		}
+		SourceAGNDrop->SelectedIndex = index;
+		//AGN type set
+
+		line = sr->ReadLine();
+		if (line != "GALTYPE")
+		{
+			::MessageBox::Show("Input file error at GALTYPE.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		index = SourceGalaxyDrop->FindString(line);
+		if (index == -1)
+		{
+			::MessageBox::Show("Input file error at Galaxy Type value: not a Galaxy type.  Stopping!");
+			return;
+		}
+		SourceGalaxyDrop->SelectedIndex = index;
+		//AGN type set
+
+		line = sr->ReadLine();
+		if (line != "SOURCE_MV")
+		{
+			::MessageBox::Show("Input file error at SOURCE_MV.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToBoolean(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at SOURCE_MV value: not a bool.  Stopping!");
+			return;
+		}
+		if (Convert::ToBoolean(line))
+		{
+			mvRadBtn->Checked = true;
+			DistanceRadBtn->Checked = false;
+		}
+		else
+		{
+			mvRadBtn->Checked = false;
+			DistanceRadBtn->Checked = true;
+		}
+		//mvRadBtn and DistanceRadBtn set
+
+		line = sr->ReadLine();
+		if (line != "MV")
+		{
+			::MessageBox::Show("Input file error at MV.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at MV value: not a numeric value.  Stopping!");
+			return;
+		}
+		mvTxt->Text = line;
+		//mvTxt value set
+
+		line = sr->ReadLine();
+		if (line != "DISTANCE")
+		{
+			::MessageBox::Show("Input file error at DISTANCE.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at DISTANCE value: not a numeric value.  Stopping!");
+			return;
+		}
+		DistanceTxt->Text = line;
+		//Distance value set
+
+		line = sr->ReadLine();
+		if (line != "RADIUS")
+		{
+			::MessageBox::Show("Input file error at RADIUS.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at RADIUS value: not a numeric value.  Stopping!");
+			return;
+		}
+		RadiusTxt->Text = line;
+		//Radius value set
+
+		line = sr->ReadLine();
+		if (line != "ALPHA")
+		{
+			::MessageBox::Show("Input file error at ALPHA.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at ALPHA value: not a numeric value.  Stopping!");
+			return;
+		}
+		PowerLawAlphaTxt->Text = line;
+		//PowerLawAlpha value set
+
+		line = sr->ReadLine();
+		if (line != "NORM")
+		{
+			::MessageBox::Show("Input file error at NORM.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at NORM value: not a numeric value.  Stopping!");
+			return;
+		}
+		PowerLawNormTxt->Text = line;
+		//PowerLawAlpha value set
+
+		line = sr->ReadLine();
+		if (line != "MAG")
+		{
+			::MessageBox::Show("Input file error at MAG.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at MAG value: not a numeric value.  Stopping!");
+			return;
+		}
+		mTxt->Text = line;
+		//mTxt value set
+
+		line = sr->ReadLine();
+		if (line != "REDSHIFT")
+		{
+			::MessageBox::Show("Input file error at REDSHIFT.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at REDSHIFT value: not a numeric value.  Stopping!");
+			return;
+		}
+		RedShiftTxt->Text = line;
+		//RedShiftTxt value set
+
+		line = sr->ReadLine();
+		if (line != "SERSICN")
+		{
+			::MessageBox::Show("Input file error at SERSICN.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at SERSICN value: not a numeric value.  Stopping!");
+			return;
+		}
+		SersicnTxt->Text = line;
+		//SersicnTxt value set
+
+		line = sr->ReadLine();
+		if (line != "REFF")
+		{
+			::MessageBox::Show("Input file error at REFF.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at REFF value: not a numeric value.  Stopping!");
+			return;
+		}
+		SersicReffTxt->Text = line;
+		//SersicReffTxt value set
+
+		line = sr->ReadLine();
+		if (line != "IEFF")
+		{
+			::MessageBox::Show("Input file error at IEFF.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at IEFF value: not a numeric value.  Stopping!");
+			return;
+		}
+		SersicRTxt->Text = line;
+		//SersicRTxt value set
+
+		line = sr->ReadLine();
+		if (line != "EXTINCTION")
+		{
+			::MessageBox::Show("Input file error at EXTINCTION.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();  //VB | CD | D
+		if (line == "VB")
+			ExtinctionAvRadBtn->Checked = true;
+		else if (line == "CD")
+			ExtinctionColumnDensityRadBtn->Checked = true;
+		else if (line == "D")
+			ExtinctionDistanceRadBtn->Checked = true;
+		else
+		{
+			::MessageBox::Show("Input file error at SOURCE type: None of VB or CD or DL.  Stopping!");
+			return;
+		}
+		//EXTINCTION radio button now set
+
+		line = sr->ReadLine();
+		if (line != "RV")
+		{
+			::MessageBox::Show("Input file error at RV.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at RV value: not a numeric value.  Stopping!");
+			return;
+		}
+		ExtinctionRvTxt->Text = line;
+		//ExtinctionRvTxt value set
+
+		line = sr->ReadLine();
+		if (line != "AV")
+		{
+			::MessageBox::Show("Input file error at AV.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at AV value: not a numeric value.  Stopping!");
+			return;
+		}
+		ExtinctionAvTxt->Text = line;
+		//ExtinctionAvTxt value set
+
+		line = sr->ReadLine();
+		if (line != "CD")
+		{
+			::MessageBox::Show("Input file error at CD.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDouble(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at CD value: not a numeric value.  Stopping!");
+			return;
+		}
+		ExtinctionColumnDensityTxt->Text = line;
+		//ExtinctionColumnDensityTxt value set
+
+		line = sr->ReadLine();
+		if (line != "PLATESCALE")
+		{
+			::MessageBox::Show("Input file error at PLATESCALE.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDecimal(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at PLATESCALE value: not a numeric value.  Stopping!");
+			return;
+		}
+		PlateScaleUpD->Value = Convert::ToDecimal(line);
+		//PlateScaleUpD value set
+
+		line = sr->ReadLine();
+		if (line != "FWHM")
+		{
+			::MessageBox::Show("Input file error at FWHM.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDecimal(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at FWHM value: not a numeric value.  Stopping!");
+			return;
+		}
+		FWHMUpD->Value = Convert::ToDecimal(line);
+		//FWHMUpD value set
+
+		line = sr->ReadLine();
+		if (line != "FILTER")
+		{
+			::MessageBox::Show("Input file error at FILTER.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();  //uvd | uv | uw | u | g
+		if (line == "uvd")
+			FilterUVDarkRadBtn->Checked = true;
+		else if (line == "uv")
+			FilterUVRadBtn->Checked = true;
+		else if (line == "uw")
+			FilteruWideRadBtn->Checked = true;
+		else if (line == "u")
+			FilteruRadBtn->Checked = true;
+		else if (line == "g")
+			FiltergRadBtn->Checked = true;
+		else
+		{
+			::MessageBox::Show("Input file error at FILTER type: None of uvd or uv or uw or u or g.  Stopping!");
+			return;
+		}
+		//FILTER radio button now set
+
+		line = sr->ReadLine();
+		if (line != "SN")
+		{
+			::MessageBox::Show("Input file error at SN.  Stopping!");
+			return;
+		}
+		line = sr->ReadLine();
+		try
+		{
+			Convert::ToDecimal(line);
+		}
+		catch (...)
+		{
+			::MessageBox::Show("Input file error at SN value: not a numeric value.  Stopping!");
+			return;
+		}
+		SNTargetUpD->Value = Convert::ToDecimal(line);
+		//SNTargetUpD value set
 
 		sr->Close();
 
@@ -502,6 +964,8 @@ void Form1::SourceBlackbodyTempTxt_KeyDown(System::Object^  sender, System::Wind
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		if (SourceBlackbodyTempTxt->Text == "")
+			return;
 		SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
 		ThroughPutETC();
 	}
@@ -509,6 +973,17 @@ void Form1::SourceBlackbodyTempTxt_KeyDown(System::Object^  sender, System::Wind
 
 void Form1::SourceBlackbodyTempTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
+	if (SourceBlackbodyTempTxt->Text == "")
+		return;
+	try
+	{
+		Convert::ToDouble(SourceBlackbodyTempTxt->Text);
+		SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
+	}
+	catch (...)
+	{
+		SourceBlackbodyTempTxt->Text = (String^)GetReg("CETC", "SourceBlackbodyTempTxt");
+	}
 }
 
 void Form1::SourceAGNDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -583,6 +1058,8 @@ void Form1::FilterUpDate()
 		{
 			Chart_Final->Series->Add("Background");
 			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+			Chart_Final->Series[1]->BorderWidth = 2;
+			Chart_Final->Series[1]->Color = Drawing::Color::Black;
 		}
 		Chart_Final->Series[1]->Points->Clear();
 		for (int i = 0; i < LAMBDA_NM->Length; i++)
@@ -674,6 +1151,8 @@ void Form1::ShowBackgroundChck_CheckedChanged(System::Object^  sender, System::E
 		{
 			Chart_Final->Series->Add("Background");
 			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+			Chart_Final->Series[1]->BorderWidth = 2;
+			Chart_Final->Series[1]->Color = Drawing::Color::Black;
 		}
 		Chart_Final->Series[1]->Points->Clear();
 		for (int i = 0; i < LAMBDA_NM->Length; i++)
@@ -966,7 +1445,7 @@ void Form1::SourceBlackBody()
 	double distance = ::Convert::ToDouble(DistanceTxt->Text);
 	double radius = Convert::ToDouble(RadiusTxt->Text);
 	double solidangle = Math::PI * (radius*SR2KPC)*(radius*SR2KPC) / (distance*distance);
-	double BB_temp = Convert::ToDouble(SourceBlackbodyTempTxt->Text->Substring(0, 7));
+	double BB_temp = Convert::ToDouble(SourceBlackbodyTempTxt->Text);
 	double lambda;
 
 	for (int i = 0; i < NELEMENTS; i++)

@@ -173,7 +173,9 @@ void Form1::ThroughPutETC()
 		if (Chart_Final->Series->Count == 1)
 		{
 			Chart_Final->Series->Add("Background");
-			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+			Chart_Final->Series[1]->ChartType = DataVisualization::Charting::SeriesChartType::Line;
+			Chart_Final->Series[1]->BorderWidth = 2;
+			Chart_Final->Series[1]->Color = Drawing::Color::Black;
 		}
 		Chart_Final->Series[1]->Points->Clear();
 		for (int i = 0; i < LAMBDA_NM->Length; i++)
