@@ -651,6 +651,18 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 		bmp = gcnew System::Drawing::Bitmap(Chart_Final->Width, Chart_Final->Height);
 		Chart_Final->DrawToBitmap(bmp, Chart_Final->DisplayRectangle);
 		bmp->Save(outdir + "final_" + SESSION.ToString() + ".jpeg");
+
+		JPFits::FitsFile^ counts = gcnew JPFits::FitsFile(outdir + "filters.fits", FINAL_FLUX_FILTERS, false);
+		counts->WriteFile(TypeCode::Double);
+
+		System::IO::StreamWriter^ sw = gcnew System::IO::StreamWriter(outdir + "counts.txt");
+		sw->WriteLine("Max CPS" + "		" + "Total CPS" + "	" + "SN Time");
+		sw->WriteLine(MaxCountUVDarkLabel->Text + "	" + TotalCountUVDarkLabel->Text + "	" + SNTimeUVDarkLabel->Text);
+		sw->WriteLine(MaxCountUVLabel->Text + "	" + TotalCountUVLabel->Text + "	" + SNTimeUVLabel->Text);
+		sw->WriteLine(MaxCountuWideLabel->Text + "	" + TotalCountuWideLabel->Text + "	" + SNTimeuWideLabel->Text);
+		sw->WriteLine(MaxCountuLabel->Text + "	" + TotalCountuLabel->Text + "	" + SNTimeuLabel->Text);
+		sw->WriteLine(MaxCountgLabel->Text + "	" + TotalCountgLabel->Text + "	" + SNTimegLabel->Text);
+		sw->Close();
 	}
 }
 
