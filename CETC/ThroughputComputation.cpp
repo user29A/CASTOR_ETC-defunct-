@@ -19,14 +19,16 @@ GNU General Public License. */
 
 
 #include "Form1.h"
-
 using namespace CETC;
 
 
 void Form1::ThroughPutETC()
 {
+	if (STARTARGS->Length > 0)
+		return;
+
 	FINAL_COUNTS = gcnew array<double>(5);
-	FINAL_MAXS = gcnew array<double>(5);
+	FINAL_COUNTS_MAXPIX = gcnew array<double>(5);
 	FINAL_COUNTS_BG = gcnew array<double>(5);
 	SN_TIME = gcnew array<double>(5);
 	SOURCE_FLUX = gcnew array<double>(NELEMENTS);
@@ -67,10 +69,7 @@ void Form1::ThroughPutETC()
 	if (ExtinctionColumnDensityRadBtn->Checked)
 		Av = Convert::ToDouble(ExtinctionColumnDensityTxt->Text);
 	if (ExtinctionDistanceRadBtn->Checked)
-	{
-		double distance = ::Convert::ToDouble(DistanceTxt->Text);
-		Av = distance * 1.6;
-	}
+		Av = Convert::ToDouble(DistanceTxt->Text) * 1.6;
 
 	double Rv = Convert::ToDouble(ExtinctionRvTxt->Text);
 
@@ -127,7 +126,7 @@ void Form1::ThroughPutETC()
 				for (int y = -n; y <= n; y++)
 					sum += A * Math::Exp(-(x*x + y*y) / tn_2 / t_s2);
 
-			FINAL_MAXS[i] = sum / tnp1_2;
+			FINAL_COUNTS_MAXPIX[i] = sum / tnp1_2;
 		}
 		else//galaxy, AGN
 		{
@@ -149,11 +148,11 @@ void Form1::ThroughPutETC()
 	TotalCountgLabel->Text = FINAL_COUNTS[4].ToString("e2");
 
 	//uvdark, uv, uwide, u, g
-	MaxCountUVDarkLabel->Text = FINAL_MAXS[0].ToString("e2");
-	MaxCountUVLabel->Text = FINAL_MAXS[1].ToString("e2");
-	MaxCountuWideLabel->Text = FINAL_MAXS[2].ToString("e2");
-	MaxCountuLabel->Text = FINAL_MAXS[3].ToString("e2");
-	MaxCountgLabel->Text = FINAL_MAXS[4].ToString("e2");
+	MaxCountUVDarkLabel->Text = FINAL_COUNTS_MAXPIX[0].ToString("e2");
+	MaxCountUVLabel->Text = FINAL_COUNTS_MAXPIX[1].ToString("e2");
+	MaxCountuWideLabel->Text = FINAL_COUNTS_MAXPIX[2].ToString("e2");
+	MaxCountuLabel->Text = FINAL_COUNTS_MAXPIX[3].ToString("e2");
+	MaxCountgLabel->Text = FINAL_COUNTS_MAXPIX[4].ToString("e2");
 	
 	//uvdark, uv, uwide, u, g
 	SNTimeUVDarkLabel->Text = SN_TIME[0].ToString("e2");
@@ -168,6 +167,22 @@ void Form1::ThroughPutETC()
 	{
 		Chart_Filter->Series[0]->Points->AddXY(LAMBDA_NM[i], FILTERS[i, SELECTED_FILTER]);
 		Chart_Final->Series[0]->Points->AddXY(LAMBDA_NM[i], FINAL_FLUX_FILTERS[i, SELECTED_FILTER]);
+	}
+	if (ShowBackgroundChck->Checked)
+	{
+		if (Chart_Final->Series->Count == 1)
+		{
+			Chart_Final->Series->Add("Background");
+			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+		}
+		Chart_Final->Series[1]->Points->Clear();
+		for (int i = 0; i < LAMBDA_NM->Length; i++)
+			Chart_Final->Series[1]->Points->AddXY(LAMBDA_NM[i], FINAL_FLUX_FILTERS_BG[i, SELECTED_FILTER]);
+	}
+	else
+	{
+		if (Chart_Final->Series->Count > 1)
+			Chart_Final->Series->RemoveAt(1);
 	}
 	Chart_Filter->ChartAreas[0]->AxisX->Minimum = PLOT_MIN;
 	Chart_Filter->ChartAreas[0]->AxisX->Maximum = PLOT_MAX;

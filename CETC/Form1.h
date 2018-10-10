@@ -61,150 +61,89 @@ namespace CETC {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Source;
-	protected:
 
-
-
-
-
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Final;
-
-	private: System::Windows::Forms::GroupBox^  SourceTypeGroupBox;
-
-	private: System::Windows::Forms::RadioButton^  SourceStarRadBtn;
-	private: System::Windows::Forms::ComboBox^  SourceStarDrop;
-
-
-	private: System::Windows::Forms::RadioButton^  SourceGalaxyRadBtn;
-
-	private: System::Windows::Forms::GroupBox^  ExtinctionGroupBox;
-	private: System::Windows::Forms::ComboBox^  SourceGalaxyDrop;
-
-	private: System::Windows::Forms::RadioButton^  SourceBlackbodyRadBtn;
-
-
-	private: System::Windows::Forms::MaskedTextBox^  SourceBlackbodyTempTxt;
-	private: System::Windows::Forms::ComboBox^  SourceAGNDrop;
-
-
-
-	private: System::Windows::Forms::RadioButton^  SourceAGNRadBtn;
-
-
-	private: System::Windows::Forms::GroupBox^  FilterGroupBox;
-	private: System::Windows::Forms::RadioButton^  FiltergRadBtn;
-
-
-	private: System::Windows::Forms::RadioButton^  FilterUVRadBtn;
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::RadioButton^  FilterUVDarkRadBtn;
-	private: System::Windows::Forms::RadioButton^  FilteruWideRadBtn;
-	private: System::Windows::Forms::RadioButton^  FilteruRadBtn;
-	private: System::Windows::Forms::Button^  EscBtn;
-
-	private: System::Windows::Forms::RadioButton^  SourcePowerLawRadBtn;
-	private: System::Windows::Forms::ComboBox^  SourcePowerLawDrop;
-	private: System::Windows::Forms::GroupBox^  SourcePropertiesGroupBox;
-	private: System::Windows::Forms::RadioButton^  DistanceRadBtn;
-
-
-	private: System::Windows::Forms::RadioButton^  mvRadBtn;
-	private: System::Windows::Forms::TextBox^  DistanceTxt;
-	private: System::Windows::Forms::TextBox^  mvTxt;
-	private: System::Windows::Forms::TextBox^  RadiusTxt;
-
-
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::TextBox^  ExtinctionRvTxt;
-
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::RadioButton^  ExtinctionColumnDensityRadBtn;
-
-	private: System::Windows::Forms::RadioButton^  ExtinctionAvRadBtn;
-	private: System::Windows::Forms::RadioButton^  ExtinctionDistanceRadBtn;
-
-	private: System::Windows::Forms::Button^  ExtinctionHelpBtn;
-	private: System::Windows::Forms::TextBox^  ExtinctionColumnDensityTxt;
-
-	private: System::Windows::Forms::TextBox^  ExtinctionAvTxt;
-	private: System::Windows::Forms::Label^  TotalCountUVDarkLabel;
-	private: System::Windows::Forms::Label^  TotalCountUVLabel;
-	private: System::Windows::Forms::Label^  TotalCountuWideLabel;
-	private: System::Windows::Forms::Label^  TotalCountuLabel;
-	private: System::Windows::Forms::Label^  TotalCountgLabel;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Filter;
+private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Source;
+private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Final;
+private: System::Windows::Forms::GroupBox^  SourceTypeGroupBox;
+private: System::Windows::Forms::RadioButton^  SourceStarRadBtn;
+private: System::Windows::Forms::ComboBox^  SourceStarDrop;
+private: System::Windows::Forms::RadioButton^  SourceGalaxyRadBtn;
+private: System::Windows::Forms::GroupBox^  ExtinctionGroupBox;
+private: System::Windows::Forms::ComboBox^  SourceGalaxyDrop;
+private: System::Windows::Forms::RadioButton^  SourceBlackbodyRadBtn;
+private: System::Windows::Forms::MaskedTextBox^  SourceBlackbodyTempTxt;
+private: System::Windows::Forms::ComboBox^  SourceAGNDrop;
+private: System::Windows::Forms::RadioButton^  SourceAGNRadBtn;
+private: System::Windows::Forms::GroupBox^  FilterGroupBox;
+private: System::Windows::Forms::RadioButton^  FiltergRadBtn;
+private: System::Windows::Forms::RadioButton^  FilterUVRadBtn;
+private: System::Windows::Forms::RadioButton^  FilterUVDarkRadBtn;
+private: System::Windows::Forms::RadioButton^  FilteruWideRadBtn;
+private: System::Windows::Forms::RadioButton^  FilteruRadBtn;
+private: System::Windows::Forms::Button^  EscBtn;
+private: System::Windows::Forms::RadioButton^  SourcePowerLawRadBtn;
+private: System::Windows::Forms::ComboBox^  SourcePowerLawDrop;
+private: System::Windows::Forms::GroupBox^  SourcePropertiesGroupBox;
+private: System::Windows::Forms::RadioButton^  DistanceRadBtn;
+private: System::Windows::Forms::RadioButton^  mvRadBtn;
+private: System::Windows::Forms::TextBox^  DistanceTxt;
+private: System::Windows::Forms::TextBox^  mvTxt;
+private: System::Windows::Forms::TextBox^  RadiusTxt;
+private: System::Windows::Forms::Label^  label2;
+private: System::Windows::Forms::TextBox^  ExtinctionRvTxt;
+private: System::Windows::Forms::Label^  label4;
+private: System::Windows::Forms::RadioButton^  ExtinctionColumnDensityRadBtn;
+private: System::Windows::Forms::RadioButton^  ExtinctionAvRadBtn;
+private: System::Windows::Forms::RadioButton^  ExtinctionDistanceRadBtn;
+private: System::Windows::Forms::Button^  ExtinctionHelpBtn;
+private: System::Windows::Forms::TextBox^  ExtinctionColumnDensityTxt;
+private: System::Windows::Forms::TextBox^  ExtinctionAvTxt;
+private: System::Windows::Forms::Label^  TotalCountUVDarkLabel;
+private: System::Windows::Forms::Label^  TotalCountUVLabel;
+private: System::Windows::Forms::Label^  TotalCountuWideLabel;
+private: System::Windows::Forms::Label^  TotalCountuLabel;
+private: System::Windows::Forms::Label^  TotalCountgLabel;
+private: System::Windows::Forms::DataVisualization::Charting::Chart^  Chart_Filter;
 private: System::Windows::Forms::Label^  label3;
 private: System::Windows::Forms::Label^  PowerLawAlphaLabel;
-
 private: System::Windows::Forms::TextBox^  PowerLawAlphaTxt;
 private: System::Windows::Forms::TextBox^  PowerLawNormTxt;
 private: System::Windows::Forms::TextBox^  RedShiftTxt;
-
 private: System::Windows::Forms::Label^  label1;
 private: System::Windows::Forms::Label^  label5;
 private: System::Windows::Forms::TextBox^  mTxt;
 private: System::Windows::Forms::CheckBox^  ShowLocalFlux;
 private: System::Windows::Forms::Button^  GalaxyTypeHelpBtn;
-
 private: System::Windows::Forms::Button^  AGNTypeHelpBtn;
-
 private: System::Windows::Forms::Button^  SpectralTypeHelpBtn;
 private: System::Windows::Forms::Label^  label6;
 private: System::Windows::Forms::Label^  label7;
 private: System::Windows::Forms::NumericUpDown^  SNTargetUpD;
-
 private: System::Windows::Forms::Label^  SNTimegLabel;
 private: System::Windows::Forms::Label^  SNTimeuLabel;
 private: System::Windows::Forms::Label^  SNTimeuWideLabel;
 private: System::Windows::Forms::Label^  SNTimeUVLabel;
 private: System::Windows::Forms::Label^  SNTimeUVDarkLabel;
 private: System::Windows::Forms::GroupBox^  DetectorGroupBox;
-
 private: System::Windows::Forms::NumericUpDown^  PlateScaleUpD;
-
 private: System::Windows::Forms::Label^  label8;
 private: System::Windows::Forms::NumericUpDown^  FWHMUpD;
-
 private: System::Windows::Forms::Label^  label9;
 private: System::Windows::Forms::TextBox^  SersicReffTxt;
-
 private: System::Windows::Forms::Label^  label10;
 private: System::Windows::Forms::Label^  label11;
 private: System::Windows::Forms::TextBox^  SersicRTxt;
 private: System::Windows::Forms::TextBox^  SersicnTxt;
-
 private: System::Windows::Forms::Label^  label12;
 private: System::Windows::Forms::Button^  SNHelpBtn;
 private: System::Windows::Forms::Label^  label13;
 private: System::Windows::Forms::Label^  MaxCountgLabel;
-
 private: System::Windows::Forms::Label^  MaxCountuLabel;
-
 private: System::Windows::Forms::Label^  MaxCountuWideLabel;
-
 private: System::Windows::Forms::Label^  MaxCountUVLabel;
-
 private: System::Windows::Forms::Label^  MaxCountUVDarkLabel;
-
-
-
-	private: System::ComponentModel::IContainer^  components;
-
-
-
-
-
-	protected:
-
-	protected:
+private: System::Windows::Forms::CheckBox^  ShowBackgroundChck;
+private: System::ComponentModel::IContainer^  components;
 
 	private:
 		/// <summary>
@@ -309,6 +248,7 @@ private: System::Windows::Forms::Label^  MaxCountUVDarkLabel;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->PlateScaleUpD = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->ShowBackgroundChck = (gcnew System::Windows::Forms::CheckBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Chart_Source))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Chart_Final))->BeginInit();
 			this->SourceTypeGroupBox->SuspendLayout();
@@ -1303,6 +1243,20 @@ private: System::Windows::Forms::Label^  MaxCountUVDarkLabel;
 			this->label8->TabIndex = 0;
 			this->label8->Text = L"Plate Scale (arcsec/pixel)";
 			// 
+			// ShowBackgroundChck
+			// 
+			this->ShowBackgroundChck->AutoSize = true;
+			this->ShowBackgroundChck->Checked = true;
+			this->ShowBackgroundChck->CheckState = System::Windows::Forms::CheckState::Checked;
+			this->ShowBackgroundChck->Enabled = false;
+			this->ShowBackgroundChck->Location = System::Drawing::Point(122, 586);
+			this->ShowBackgroundChck->Name = L"ShowBackgroundChck";
+			this->ShowBackgroundChck->Size = System::Drawing::Size(114, 17);
+			this->ShowBackgroundChck->TabIndex = 17;
+			this->ShowBackgroundChck->Text = L"Show Background";
+			this->ShowBackgroundChck->UseVisualStyleBackColor = true;
+			this->ShowBackgroundChck->CheckedChanged += gcnew System::EventHandler(this, &Form1::ShowBackgroundChck_CheckedChanged);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1310,6 +1264,7 @@ private: System::Windows::Forms::Label^  MaxCountUVDarkLabel;
 			this->BackColor = System::Drawing::Color::Silver;
 			this->CancelButton = this->EscBtn;
 			this->ClientSize = System::Drawing::Size(1446, 842);
+			this->Controls->Add(this->ShowBackgroundChck);
 			this->Controls->Add(this->DetectorGroupBox);
 			this->Controls->Add(this->ShowLocalFlux);
 			this->Controls->Add(this->Chart_Source);
@@ -1382,7 +1337,7 @@ array<double, 2>^ FILTERS = gcnew array<double, 2>(NELEMENTS, 5);//uvdark, uv, u
 array<double, 2>^ FINAL_FLUX_FILTERS = gcnew array<double, 2>(NELEMENTS, 5);//uvdark, uv, uwide, u, g  --vector array for final fluxes each filter
 array<double, 2>^ FINAL_FLUX_FILTERS_BG = gcnew array<double, 2>(NELEMENTS, 5);//uvdark, uv, uwide, u, g  --vector array for final fluxes each filter backgrounds
 array<double>^ FINAL_COUNTS;
-array<double>^ FINAL_MAXS;
+array<double>^ FINAL_COUNTS_MAXPIX;
 array<double>^ FINAL_COUNTS_BG;
 array<double>^ SN_TIME;
 
@@ -1485,5 +1440,6 @@ private: System::Void SNTargetUpD_ValueChanged(System::Object^  sender, System::
 private: System::Void SNHelpBtn_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void PlateScaleUpD_ValueChanged(System::Object^  sender, System::EventArgs^  e);
 private: System::Void FWHMUpD_ValueChanged(System::Object^  sender, System::EventArgs^  e);
+private: System::Void ShowBackgroundChck_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
 };
 }

@@ -113,7 +113,7 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 
 	if (STARTARGS->Length > 0)//then this GUI been opened with a string argument for script execution
 	{
-		//TO DO:  Should supress computation until all switches are set, unlike the GUI interface where switch changes
+		//Supress computation until all switches are set, unlike the GUI interface where switch changes
 		//trigger the computation and graph updates etc.
 		//STARTARGS->Length > 0 is the bool that tells if script start
 		
@@ -169,13 +169,12 @@ void Form1::Form1_Load(System::Object^  sender, System::EventArgs^  e)
 
 		sr->Close();
 
-		//reset startargs
+		//reset startargs so that we can call ThroughPutETC()
 		STARTARGS = gcnew array<String^>(0);
-
 		//now compute
-		ThroughPutETC();//this will need to be called when/if the switch changes are supressed for script execution...otherwise for now it is already done
-		//now save outputs
+		ThroughPutETC();
 
+		//now save outputs
 		String^ outdir = CASTOR_DIRECTORY + "\\Output\\" + SESSION.ToString() + "\\";
 		IO::Directory::CreateDirectory(outdir);
 		
@@ -403,6 +402,7 @@ void Form1::DistanceTxt_KeyDown(System::Object^  sender, System::Windows::Forms:
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "DistanceTxt", DistanceTxt->Text);
 		ThroughPutETC();
 	}		
 }
@@ -412,6 +412,7 @@ void Form1::RadiusTxt_KeyDown(System::Object^  sender, System::Windows::Forms::K
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "RadiusTxt", RadiusTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -421,6 +422,7 @@ void Form1::PowerLawAlphaTxt_KeyDown(System::Object^  sender, System::Windows::F
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "PowerLawAlphaTxt", PowerLawAlphaTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -430,6 +432,7 @@ void Form1::PowerLawNormTxt_KeyDown(System::Object^  sender, System::Windows::Fo
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "PowerLawNormTxt", PowerLawNormTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -439,6 +442,7 @@ void Form1::ExtinctionAvTxt_KeyDown(System::Object^  sender, System::Windows::Fo
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "ExtinctionAvTxt", ExtinctionAvTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -448,6 +452,7 @@ void Form1::ExtinctionColumnDensityTxt_KeyDown(System::Object^  sender, System::
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "ExtinctionColumnDensityTxt", ExtinctionColumnDensityTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -457,6 +462,7 @@ void Form1::ExtinctionRvTxt_KeyDown(System::Object^  sender, System::Windows::Fo
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "ExtinctionRvTxt", ExtinctionRvTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -466,6 +472,7 @@ void Form1::mvTxt_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEv
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "mvTxt", mvTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -475,6 +482,7 @@ void Form1::mTxt_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEve
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "mTxt", mTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -484,6 +492,7 @@ void Form1::RedShiftTxt_KeyDown(System::Object^  sender, System::Windows::Forms:
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "RedShiftTxt", RedShiftTxt->Text);
 		ThroughPutETC();
 	}
 }
@@ -493,13 +502,13 @@ void Form1::SourceBlackbodyTempTxt_KeyDown(System::Object^  sender, System::Wind
 	if (e->KeyCode == ::Keys::Return)
 	{
 		e->SuppressKeyPress = true;
+		SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
 		ThroughPutETC();
 	}
 }
 
 void Form1::SourceBlackbodyTempTxt_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	SetReg("CETC", "SourceBlackbodyTempTxt", SourceBlackbodyTempTxt->Text);
 }
 
 void Form1::SourceAGNDrop_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
@@ -567,75 +576,108 @@ void Form1::FilterUpDate()
 		Chart_Filter->Series[0]->Points->AddXY(LAMBDA_NM[i], FILTERS[i, SELECTED_FILTER]);
 		Chart_Final->Series[0]->Points->AddXY(LAMBDA_NM[i], FINAL_FLUX_FILTERS[i, SELECTED_FILTER]);
 	}
+
+	if (ShowBackgroundChck->Checked)
+	{
+		if (Chart_Final->Series->Count == 1)
+		{
+			Chart_Final->Series->Add("Background");
+			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+		}
+		Chart_Final->Series[1]->Points->Clear();
+		for (int i = 0; i < LAMBDA_NM->Length; i++)
+			Chart_Final->Series[1]->Points->AddXY(LAMBDA_NM[i], FINAL_FLUX_FILTERS_BG[i, SELECTED_FILTER]);
+	}
+	else
+	{
+		if (Chart_Final->Series->Count > 1)
+			Chart_Final->Series->RemoveAt(1);
+	}
 }
 
 void Form1::FilterUVDarkRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	if (FIRSTSLOAD)
-		return;
-
 	SetReg("CETC", "FilterUVDarkRadBtnChckd", FilterUVDarkRadBtn->Checked);
 	
 	if (FilterUVDarkRadBtn->Checked)
 	{
 		SELECTED_FILTER = 0;
+		if (!COMPUTATION_EXISTS)
+			return;
 		FilterUpDate();
 	}
 }
 
 void Form1::FilterUVRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	if (FIRSTSLOAD)
-		return;
-
 	SetReg("CETC", "FilterUVRadBtnChckd", FilterUVRadBtn->Checked);
 	
 	if (FilterUVRadBtn->Checked)
 	{
 		SELECTED_FILTER = 1;
+		if (!COMPUTATION_EXISTS)
+			return;
 		FilterUpDate();
 	}
 }
 
 void Form1::FilteruWideRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	if (FIRSTSLOAD)
-		return;
-
 	SetReg("CETC", "FilterUWideRadBtnChckd", FilteruWideRadBtn->Checked);
 	
 	if (FilteruWideRadBtn->Checked)
 	{
 		SELECTED_FILTER = 2;
+		if (!COMPUTATION_EXISTS)
+			return;
 		FilterUpDate();
 	}
 }
 
 void Form1::FilteruRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	if (FIRSTSLOAD)
-		return;
-
 	SetReg("CETC", "FilteruRadBtnChckd", FilteruRadBtn->Checked);
 	
 	if (FilteruRadBtn->Checked)
 	{
 		SELECTED_FILTER = 3;
+		if (!COMPUTATION_EXISTS)
+			return;
 		FilterUpDate();
 	}
 }
 
 void Form1::FiltergRadBtn_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 {
-	if (FIRSTSLOAD)
-		return;
-
 	SetReg("CETC", "FiltergRadBtnChckd", FiltergRadBtn->Checked);
 	
 	if (FiltergRadBtn->Checked)
 	{
 		SELECTED_FILTER = 4;
+		if (!COMPUTATION_EXISTS)
+			return;
 		FilterUpDate();
+	}
+}
+
+void Form1::ShowBackgroundChck_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
+{
+	if (!COMPUTATION_EXISTS)
+		return;
+
+	if (!ShowBackgroundChck->Checked && Chart_Final->Series->Count > 1)
+		Chart_Final->Series->RemoveAt(1);
+
+	if (ShowBackgroundChck->Checked)
+	{
+		if (Chart_Final->Series->Count == 1)
+		{
+			Chart_Final->Series->Add("Background");
+			Chart_Final->Series[1]->ChartType = ::DataVisualization::Charting::SeriesChartType::Line;
+		}
+		Chart_Final->Series[1]->Points->Clear();
+		for (int i = 0; i < LAMBDA_NM->Length; i++)
+			Chart_Final->Series[1]->Points->AddXY(LAMBDA_NM[i], FINAL_FLUX_FILTERS_BG[i, SELECTED_FILTER]);
 	}
 }
 
