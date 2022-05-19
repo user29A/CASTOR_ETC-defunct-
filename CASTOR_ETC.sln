@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASTOR_ETC", "CASTOR_ETC\CASTOR_ETC.csproj", "{54C0C954-633E-4652-A78E-2280C6646C00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Debug|x64.ActiveCfg = Debug|x64
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Debug|x64.Build.0 = Debug|x64
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Release|x64.ActiveCfg = Release|x64
+		{54C0C954-633E-4652-A78E-2280C6646C00}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E7F8609-477A-4D1E-9EB6-7362F43E0548}
+	EndGlobalSection
+EndGlobal
